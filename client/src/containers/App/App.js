@@ -11,15 +11,28 @@ class App extends Component {
     }
   }
 
-  getData() {
+  getStaticData() {
     var data = require('../../testData.json');
     this.setState({
       boards: data
     });
   }
 
+  fetchData() {
+    fetch('http://localhost:3200/board/all')
+      .then(res => {
+        return res.json();
+      })
+      .then(res => {
+        this.setState({
+          boards: res
+        });
+      })
+      .catch(err => console.log(err)); 
+  }
+
   componentDidMount() {
-    this.getData();
+    this.fetchData();
   }
 
   render() {

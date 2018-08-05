@@ -27,49 +27,54 @@ exports.add_testdata = function (req, res) {
     });
 }
 
-var testData = [  
-    {  
-       "displayName":"TestBoard1",
-       "columns":[  
-          {  
-             "displayName":"List1",
-             "cards":[  
-                {  
-                   "displayName":"Card1",
-                   "description":"Lorem ipsum"
-                },
-                {  
-                   "displayName":"Card2",
-                   "description":"Lorem ipsum"
-                }
-             ]
-          },
-          {  
-             "displayName":"List2",
-             "cards":[  
-                {  
-                   "displayName":"Card3",
-                   "description":"Lorem ipsum"
-                },
-                {  
-                   "displayName":"Card4",
-                   "description":"Lorem ipsum"
-                },
-                {  
-                   "displayName":"Card5",
-                   "description":"Lorem ipsum"
-                }
-             ]
-          },
-          {  
-             "displayName":"List3",
-             "cards":[  
-                {  
-                   "displayName":"Card6",
-                   "description":"Lorem ipsum"
-                }
-             ]
-          }
-       ]
+// exports.add_new_card = function (req, res) {
+//     let conditions = { _id: req.cardId };
+//     Board.update(conditions,)
+// }
+
+var testData = [
+    {
+        "displayName": "TestBoard1",
+        "columns": [
+            {
+                "displayName": "List1",
+                "cards": [
+                    {
+                        "displayName": "Card1",
+                        "description": "Lorem ipsum"
+                    },
+                    {
+                        "displayName": "Card2",
+                        "description": "Lorem ipsum"
+                    }
+                ]
+            },
+            {
+                "displayName": "List2",
+                "cards": [
+                    {
+                        "displayName": "Card3",
+                        "description": "Lorem ipsum"
+                    },
+                    {
+                        "displayName": "Card4",
+                        "description": "Lorem ipsum"
+                    },
+                    {
+                        "displayName": "Card5",
+                        "description": "Lorem ipsum"
+                    }
+                ]
+            },
+            {
+                "displayName": "List3",
+                "cards": [
+                    {
+                        "displayName": "Card6",
+                        "description": "Lorem ipsum"
+                    }
+                ]
+            }
+        ]
     }
- ];
+];
