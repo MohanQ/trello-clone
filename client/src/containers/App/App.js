@@ -1,21 +1,29 @@
 import React, { Component } from 'react';
 import './App.css';
 import Board from '../Board/Board';
+import Modal from '../../components/Modal/Modal';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      boards: null
+      boards: null,
+      isOpen: false
     }
   }
 
   getStaticData() {
     var data = require('../../testData.json');
-    this.setState({
-      boards: data
-    });
+    let currState = this.state;
+    currState.boards = data;
+    this.setState(currState);
+  }
+
+  toogleModal = () => {
+    console.log("toogle...");
+    this.setState({ isOpen: !this.state.isOpen });
+    console.log(this.state);
   }
 
   fetchData() {
@@ -24,9 +32,9 @@ class App extends Component {
         return res.json();
       })
       .then(res => {
-        this.setState({
-          boards: res
-        });
+        let currState = this.state;
+        currState.boards = res;
+        this.setState(currState);
       })
       .catch(err => console.log(err));
   }
@@ -44,9 +52,17 @@ class App extends Component {
     }
     return (
       <div className="App">
+        {/* <button onClick={this.toogleModal}>Open the modal</button> */}
+
         <Board columns={boards[0].columns} boardId={boards[0]._id}>
         </Board>
+
+
+        <Modal show={this.state.isOpen} onClose={this.toogleModal}>
+          
+        </Modal>
       </div>
+
     );
   }
 }

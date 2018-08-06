@@ -8,10 +8,10 @@ class Board extends React.Component {
         return (
             <div>
                 {
-                    columns.map((column,id) => {
+                    columns.map((column, id) => {
                         return (
                             <List
-                                key = {id} column={column} boardId={this.props.boardId}>
+                                key={id} column={column} boardId={this.props.boardId}>
                             </List>);
                     })
                 }

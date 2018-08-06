@@ -70,7 +70,7 @@ class NewCard extends React.Component {
                 <button className="btn btn-info btn-slim" onClick={this.handleAddAnotherCard}> Add another card..</button>
             );
         return (
-            <div classname="form-group">
+            <div className="form-group">
                 <hr className="mt0" />
                 <div>
                     <textarea className="form-control" onChange={this.handleChangeTitle} placeholder="Enter a title for this card"></textarea>

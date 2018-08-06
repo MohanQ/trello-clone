@@ -3,14 +3,18 @@ import './Card.css'
 
 class Card extends React.Component {
 
+    handleOnClick = () => {
+
+    }
+
     render() {
         const { card } = this.props;
 
         return (
-            <div className="card-title bg-washed-blue br2 pa1 dim">
+            <div className="card-title bg-washed-blue br2 pa1 dim" onClick={this.handleOnClick}>
                 <p>{card.displayName}</p>
             </div>
-            );
+        );
     }
 }
 
