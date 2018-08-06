@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './NewCard.css';
 class NewCard extends React.Component {
     constructor(props) {
         super();
@@ -67,14 +67,16 @@ class NewCard extends React.Component {
 
         if (!underCreating)
             return (
-                <button onClick={this.handleAddAnotherCard}> Add another card..</button>
+                <button className="btn btn-info btn-slim" onClick={this.handleAddAnotherCard}> Add another card..</button>
             );
         return (
-            <div>
-                <textarea onChange={this.handleChangeTitle} placeholder="Enter a title for this card"></textarea>
-                <br />
-                <button onClick={this.handleAddCard}>Add card</button>
-                <button onClick={this.handleCancel}>Cancel</button>
+            <div classname="form-group">
+                <hr className="mt0" />
+                <div>
+                    <textarea className="form-control" onChange={this.handleChangeTitle} placeholder="Enter a title for this card"></textarea>
+                </div>
+                <button className="btn btn-primary mr1 mt3" onClick={this.handleAddCard}>Add card</button>
+                <button className="btn btn-basic ml1 mt3" onClick={this.handleCancel}>Cancel</button>
             </div>
         );
     }

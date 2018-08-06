@@ -1,6 +1,7 @@
 import React from 'react'
 import Card from '../Card/Card'
 import NewCard from '../../components/NewCard/NewCard'
+import './List.css'
 
 class List extends React.Component {
 
@@ -23,7 +24,7 @@ class List extends React.Component {
 
         return (
             <div className="bg-lightest-blue br1 fl w-20 pa3 ma2">
-                <h3 className="tl">{column.displayName}</h3>
+                <h4 className="title">{column.displayName}</h4>
                 {column.cards.map(
                     card => {
                         return (

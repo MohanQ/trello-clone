@@ -3,10 +3,12 @@ var mongoose = require('mongoose'),
     Board = mongoose.model('Boards');
 
 exports.create = function (req, res) {
+
     let request = req.body;
     let boardId = request.boardId;
     let columnId = request.columnId;
     let card = request.card;
+
     Board.findById(boardId, function (err, board) {
         if (err)
             res.send(err);
