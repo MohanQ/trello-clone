@@ -26,10 +26,10 @@ class List extends React.Component {
             <div className="bg-lightest-blue br1 fl w-20 pa3 ma2">
                 <h4 className="title">{column.displayName}</h4>
                 {column.cards.map(
-                    card => {
+                    (card, id) => {
                         return (
-                            <div>
-                                <Card card={card} >
+                            <div key={id}>
+                                <Card card={card}>
                                 </Card>
                                 <br />
                             </div>)
