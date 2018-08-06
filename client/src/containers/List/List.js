@@ -15,9 +15,7 @@ class List extends React.Component {
 
 
     addNewCard() {
-        let data = this.state.column;
-        let card = { displayName: "NEW", description: "Desc..." };
-
+        let card = { displayName: "Új kártya2", description: "Desc..." };
         fetch('http://localhost:3200/card/create', {
             method: 'POST',
             headers: {
@@ -29,12 +27,14 @@ class List extends React.Component {
                 columnId: this.props.column._id,
                 card: card
             })
-        }).then(res => console.log(res)).catch(err => console.error(err));
+        })
+            .then(res => res.json())
+            .then(res => {
+                let currState = this.state;
+                currState.column.cards.push(res);
+                this.setState(currState);
+            }).catch(err => console.error(err));
 
-        data.cards.push();
-        this.setState({
-            data: data
-        });
     }
 
 
