@@ -1,17 +1,16 @@
 'use strict'
 var mongoose = require('mongoose'),
-    Card = mongoose.model('Cards'),
     Board = mongoose.model('Boards');
 
-exports.get_a_card = function (req, res) {
-    Card.findById(req.params.cardId, function (err, card) {
-        if (err)
-            res.send(err);
-        res.json(card);
-    });
-};
+// exports.get_a_card = function (req, res) {
+//     Card.findById(req.params.cardId, function (err, card) {
+//         if (err)
+//             res.send(err);
+//         res.json(card);
+//     });
+// };
 
-exports.get_all_boards = function (req, res) {
+exports.get_all = function (req, res) {
     Board.find({}, function (err, all) {
         if (err)
             res.send(err)
@@ -25,33 +24,6 @@ exports.add_testdata = function (req, res) {
             res.send(err);
         res.json(docs);
     });
-}
-
-exports.add_new_card = function (req, res) {
-    let request = req.body;
-    let boardId = request.boardId;
-    let columnId = request.columnId;
-    let card = request.card;
-    Board.findById(boardId, function (err, board) {
-        if (err)
-            res.send(err);
-        else {
-            let column = board.columns.id(columnId);
-            if (column) {
-                column.cards.push(card);
-                let newSubDoc = column.cards[column.cards.length - 1];
-                newSubDoc.isNew = true;
-
-                board.save(function (err) {
-                    if (err) res.send(err);
-                    res.json(card);
-                });
-            }
-            else {
-                res.send(new Error("The column is null!"));
-            }
-        }
-    })
 }
 
 var testData = [
