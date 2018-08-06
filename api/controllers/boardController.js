@@ -2,14 +2,6 @@
 var mongoose = require('mongoose'),
     Board = mongoose.model('Boards');
 
-// exports.get_a_card = function (req, res) {
-//     Card.findById(req.params.cardId, function (err, card) {
-//         if (err)
-//             res.send(err);
-//         res.json(card);
-//     });
-// };
-
 exports.get_all = function (req, res) {
     Board.find({}, function (err, all) {
         if (err)
