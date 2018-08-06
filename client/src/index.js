@@ -5,6 +5,15 @@ import App from './containers/App/App';
 import registerServiceWorker from './registerServiceWorker';
 import 'tachyons';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { combineReducers, createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { modalStateChangeReducer } from './reducers';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const rootReducer = combineReducers({ modalStateChangeReducer });
+const store = createStore(rootReducer); F
+
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>, document.getElementById('root'));
 registerServiceWorker();
