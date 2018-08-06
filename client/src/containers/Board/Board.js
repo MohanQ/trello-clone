@@ -14,7 +14,7 @@ class Board extends React.Component {
                     columns.map(column => {
                         return (
                             <List
-                                data={column}>
+                                column={column} boardId={this.props.boardId}>
                             </List>);
                     })
                 }

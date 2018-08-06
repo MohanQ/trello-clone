@@ -5,7 +5,7 @@ class List extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: this.props.data
+            column: this.props.column
         }
     }
 
@@ -13,9 +13,25 @@ class List extends React.Component {
         this.addNewCard();
     }
 
+
     addNewCard() {
-        let data = this.state.data;
-        data.cards.push({ displayName: "NEW", description: "Desc..." });
+        let data = this.state.column;
+        let card = { displayName: "NEW", description: "Desc..." };
+
+        fetch('http://localhost:3200/card/create', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                boardId: this.props.boardId,
+                columnId: this.props.column._id,
+                card: card
+            })
+        }).then(res => console.log(res)).catch(err => console.error(err));
+
+        data.cards.push();
         this.setState({
             data: data
         });
@@ -23,12 +39,12 @@ class List extends React.Component {
 
 
     render() {
-        const { data } = this.state;
+        const { column } = this.state;
 
         return (
             <div className="bg-lightest-blue br1 fl w-20 pa3 ma2">
-                <h3 className="tl">{data.displayName}</h3>
-                {data.cards.map(
+                <h3 className="tl">{column.displayName}</h3>
+                {column.cards.map(
                     card => {
                         return (
                             <div>

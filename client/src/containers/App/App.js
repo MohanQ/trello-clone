@@ -28,7 +28,7 @@ class App extends Component {
           boards: res
         });
       })
-      .catch(err => console.log(err)); 
+      .catch(err => console.log(err));
   }
 
   componentDidMount() {
@@ -44,7 +44,7 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <Board columns={boards[0].columns}>
+        <Board columns={boards[0].columns} boardId={boards[0]._id}>
         </Board>
       </div>
     );

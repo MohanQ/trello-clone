@@ -10,4 +10,7 @@ module.exports = function (app) {
 
     app.route('/board/test')
         .get(trelloController.add_testdata);
+
+    app.route('/card/create')
+        .post(trelloController.add_new_card);
 };
