@@ -3,6 +3,7 @@ import "./App.css";
 import Board from "../Board/Board";
 import Modal from "../../components/Modal/Modal";
 import { connect } from "react-redux";
+import CardEditor from "../../components/CardEditor/CardEditor"
 
 class App extends Component {
   constructor(props) {
@@ -52,7 +53,7 @@ class App extends Component {
         <Board columns={boards[0].columns} boardId={boards[0]._id} />
 
         <Modal show={this.props.isOpen}>
-          <button className="btn btn-danger">Reeeed</button>
+          <CardEditor></CardEditor>
         </Modal>
       </div>
     );
