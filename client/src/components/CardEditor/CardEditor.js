@@ -27,11 +27,11 @@ class CardEditor extends React.Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
-                    <label for="name-editor">Name</label>
+                    <label htmlFor="name-editor">Name</label>
                     <input className="form-control" type="text" id="name-editor" onChange={this.handleNameChange}></input>
                 </div>
                 <div className="form-group">
-                    <label for="desc-editor">Description</label>
+                    <label htmlFor="desc-editor">Description</label>
                     <textarea id="desc-editor" className="form-control" onChange={this.handleDescriptionChange}></textarea>
                 </div>
             </form>

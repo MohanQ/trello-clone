@@ -28,5 +28,29 @@ exports.create = function (req, res) {
                 res.send(new Error("The column is null!"));
             }
         }
-    })
+    });
+}
+
+exports.get = function (req, res) {
+    let boardId = req.params.boardId;
+    let columnId = req.params.columnId;
+    let cardId = req.params.cardId;
+
+    Board.findById(boardId, function (err, board) {
+        if (err)
+            return res.send(err);
+        else {
+            let column = board.columns.id(columnId);
+            if (column) {
+                let card = column.cards.id(cardId);
+                if (card)
+                    res.json(card);
+                else
+                    res.send(new Error("The card is null or undefined"));
+            }
+            else {
+                res.send(new Error("The column is null"));
+            }
+        }
+    });
 }
