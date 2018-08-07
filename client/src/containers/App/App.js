@@ -1,20 +1,19 @@
-import React, { Component } from 'react';
-import './App.css';
-import Board from '../Board/Board';
-import Modal from '../../components/Modal/Modal';
+import React, { Component } from "react";
+import "./App.css";
+import Board from "../Board/Board";
+import Modal from "../../components/Modal/Modal";
+import { connect } from "react-redux";
 
 class App extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      boards: null,
-      isOpen: false
-    }
+      boards: null
+    };
   }
 
   getStaticData() {
-    var data = require('../../testData.json');
+    var data = require("../../testData.json");
     let currState = this.state;
     currState.boards = data;
     this.setState(currState);
@@ -24,10 +23,10 @@ class App extends Component {
     console.log("toogle...");
     this.setState({ isOpen: !this.state.isOpen });
     console.log(this.state);
-  }
+  };
 
   fetchData() {
-    fetch('http://localhost:3200/board/all')
+    fetch("http://localhost:3200/board/all")
       .then(res => {
         return res.json();
       })
@@ -40,31 +39,38 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.fetchData();
+    this.getStaticData();
   }
 
   render() {
     const { boards } = this.state;
-    console.log(boards);
+    console.log("App's render is calling!");
     if (!boards) {
-
       return <div>Loading... </div>;
     }
     return (
       <div className="App">
-        {/* <button onClick={this.toogleModal}>Open the modal</button> */}
+        <Board columns={boards[0].columns} boardId={boards[0]._id} />
 
-        <Board columns={boards[0].columns} boardId={boards[0]._id}>
-        </Board>
-
-
-        <Modal show={this.state.isOpen} onClose={this.toogleModal}>
-          
+        <Modal show={this.props.isOpen}>
+          <button className="btn btn-danger">Reeeed</button>
         </Modal>
       </div>
-
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  console.log(
+    "App.js mapStateToProps is called! With parameter state: ",
+    state
+  );
+  return {
+    isOpen: state.isOpen
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(App);
