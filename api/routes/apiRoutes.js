@@ -6,9 +6,6 @@ module.exports = function (app) {
     app.route('/board/all')
         .get(boardController.get_all);
 
-    // app.route('/board/test')
-    //     .get(boardController.add_testdata);
-
     app.route('/card/create')
         .post(cardController.create);
 };

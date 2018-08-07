@@ -39,12 +39,11 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.getStaticData();
+    this.fetchData();
   }
 
   render() {
     const { boards } = this.state;
-    console.log("App's render is calling!");
     if (!boards) {
       return <div>Loading... </div>;
     }
@@ -61,16 +60,9 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(
-    "App.js mapStateToProps is called! With parameter state: ",
-    state
-  );
   return {
-    isOpen: state.isOpen
+    isOpen: state.modalStateChangeReducer.isOpen
   };
 };
 
-export default connect(
-  mapStateToProps,
-  null
-)(App);
+export default connect(mapStateToProps, null)(App);
